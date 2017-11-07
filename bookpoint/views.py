@@ -1,10 +1,7 @@
 import requests
 import re
-from flask import Flask, render_template, request
+from bookpoint import app
 
- 
-app = Flask(__name__)      
- 
 @app.route('/')
 def home():
   return render_template('home.html', url_list=get_list())
@@ -23,8 +20,6 @@ def add_bookmark():
         list_file.write(mark)
     list_file.close()
     return render_template('home.html', url_list=get_list())
-
-#@app.rout('/add/remove')
 
 if __name__ == '__main__':
   app.run(debug=True)
