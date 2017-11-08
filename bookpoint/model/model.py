@@ -1,6 +1,7 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, ForeignKey, create_engine
+from sqlalchemy import Column, Integer, String, ForeignKey, create_engine, Table, Date
 from sqlalchemy.orm import relationship
+import datetime
 
 Base = declarative_base()
 engine = create_engine('sqlite:///bookpoint/model/bookpoint.db', echo=True)
@@ -30,6 +31,7 @@ class Mark(Base):
     category = relationship('Category', back_populates='mark')
     notes = Column(String)
     tags = relationship("Tag", secondary=Table('mark_tag', Base.metadata, Column('mark_id', Integer, ForeignKey('marks.id')), Column('tag_id', Integer, ForeignKey('tags.id'))))
-#    date_added = 
+    date_added = Column(Date, default=datetime.date.today())
     
-Base.metadata.create_all(engine)
+def create_all():
+    Base.metadata.create_all(engine)
