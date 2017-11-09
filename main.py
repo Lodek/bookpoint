@@ -4,6 +4,3 @@ from sqlalchemy.orm import sessionmaker
 Session = sessionmaker(bind=engine)
 session = Session()
 
-for name in session.query(Mark):
-    print(name.date_added)
-    
