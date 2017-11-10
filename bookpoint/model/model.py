@@ -32,6 +32,7 @@ class Mark(Base):
     notes = Column(String)
     tags = relationship("Tag", secondary=Table('mark_tag', Base.metadata, Column('mark_id', Integer, ForeignKey('marks.id')), Column('tag_id', Integer, ForeignKey('tags.id'))))
     date_added = Column(Date, default=datetime.date.today())
+    tags_str = ''
     
 def create_all():
     Base.metadata.create_all(engine)

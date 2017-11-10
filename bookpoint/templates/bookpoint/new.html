@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+  
+{% block content %}
+  <h2>Add</h2>
+
+  <form action="{{ url_for('add_bookmark') }}" method="post" accept-charset="utf-8">
+    url: <input type="text" name="url" id="" value="" /><br></br>
+    title: <input type="text" name="title" id="" value="" /><br></br>
+    category: <input type="text" name="category" id="" value="" /><br></br>
+    tags: <textarea name="tags" rows=5 cols=20></textarea>
+      <input type="submit" name="" id="" value="add entry" />
+  </form>
+{% endblock %}
