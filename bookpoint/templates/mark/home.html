@@ -1,0 +1,11 @@
+{% for category, mark in mark_dict.items() %}
+<hr>
+<h1> {{ category }} </h1>
+{% for element in mark %}
+{{ element[0].id }}||<a href="{{ element[0].url }}">{{ element[0].title }} </a>
+<br>{{ element[1] }}
+<br>{{ element[0].notes }}
+<br>
+<br>
+{% endfor %}
+{% endfor %}

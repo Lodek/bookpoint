@@ -1,3 +1,5 @@
+import requests, re
+
 def get_title(url):
     # Discard exception for when the url is not valid or whatever
     try:
@@ -12,3 +14,4 @@ def get_title(url):
         title=url
         
     return title
+

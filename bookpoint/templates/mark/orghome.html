@@ -1,0 +1,9 @@
+{% for category, mark in mark_dict.items() %}
+* {{ category }}<br>
+{% for element in mark %}
+** {{ element[0].id }}-[[{{ element[0].url }}][{{ element[0].title }}]] 
+{{ element[1] }} <br>
+{{ element[0].notes }}
+<br>
+{% endfor %}
+{% endfor %}
