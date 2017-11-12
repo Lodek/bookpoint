@@ -1,4 +1,5 @@
-import requests, re
+import requests
+import re
 
 def get_title(url):
     # Discard exception for when the url is not valid or whatever

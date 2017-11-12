@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 app = Flask(__name__) 
 
-Session = sessionmaker(bind=engine)
-session = Session()
+Session_db = sessionmaker(bind=engine)
+session_db = Session_db()
 
 import bookpoint.routes

@@ -1,3 +1,8 @@
+from bookpoint.lib import lib
+from bookpoint import session_db, app
+from flask import Flask, render_template, request
+from bookpoint.model.model import Category, Mark, Tag
+
 def home():
     readinq_list = [q for q in session.query(Mark).order_by(Mark.date_added).filter(Mark.category_id == 1).all()]
     return render_template('readingq/home.html', readingq=readingq_list)

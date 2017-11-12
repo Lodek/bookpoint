@@ -1,5 +1,5 @@
 from bookpoint.lib import lib
-from bookpoint import session, app
+from bookpoint import session_db, app
 from flask import Flask, render_template, request
 from bookpoint.model.model import Category, Mark, Tag, Base, engine
 

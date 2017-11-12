@@ -4,6 +4,5 @@ setup(
     name='bookpoint',
     packages=['bookpoint'],
     include_package_data=True,
-    install_requires=['flask','sqlalchemy'],
+    install_requires=['flask','sqlalchemy', 'requets'],
     )
-    
