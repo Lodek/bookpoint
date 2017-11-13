@@ -35,5 +35,5 @@ def get_full_db():
                 tags += '{}:'.format(tag.name)
             mark.tags_str=tags
             marks_list.append(mark)
-        mark_dict[category] = marks_list
+        db_dict[category] = marks_list
     return db_dict

@@ -5,10 +5,29 @@ from bookpoint.model.model import Category, Mark, Tag
 
 
 def home():
-    readinq_list = [q for q in session_db.query(Mark).order_by(Mark.date_added).filter(Mark.category_id == 1).all()]
-    return render_template('readingq/home.html', readingq=readingq_list)
+    sessions = get_sessions
+    return render_template('readingq/home.html', sessions=sessions)
 
 def new():
     return render_template('readingq/new.html')
 
-#session_db.query(Mark).order_by(Mark.category.name).filter(Mark.tags.na
+def create():
+    tag_ses = session_db.query(Tag).filter(Tag.name == 'session')
+    category = request.form['category']
+    notes = request.form['notes']
+    urls = request.form['urls']
+    url_list = parse_urls(urls)
+
+
+def get_sessions():
+    tag_ses = session_db.query(Tag).filter(Tag.name == 'session') #query session tag obj
+    mark_list = tag_ses.marks
+    sessions = {}
+    for mark in mark_list: #generates dictionary with empty list for every category
+        sessions[mark.category]= []
+    for mark in mark_list: #
+        sessions[mark.category].append(mark)
+    return sessions
+
+def parse_urls(urls):
+    return
