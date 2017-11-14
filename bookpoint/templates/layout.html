@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BookMark App</title>    
-    <strong><link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"></strong>
+    <title>Bookpoint</title>    
     <div class="container">
-        <h1 class="logo">BookMark App</h1>
-        <nav>
-          <ul class="menu">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('add') }}">Add</a></li>
-          </ul>
-        </nav>
+        <li><a href="{{ url_for('bookpoint_home) }}">Home</a></li>
+        <li><a href="{{ url_for('sessions_home') }}">Sessions</a></li>
+        <li><a href="{{ url_for('readingq_home') }}">Reading Queue</a></li>
       </div>
   </head>
   <body>

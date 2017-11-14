@@ -1,3 +1,4 @@
+from bookpoint import session_db
 import requests
 import re
 
@@ -5,14 +6,10 @@ def get_title(url):
     # Discard exception for when the url is not valid or whatever
     try:
         obj=requests.get(url)
-        src_code=obj.text
-        title=re.findall('<title>.*?</title>',src_code)
-        title=title[0]
-        title=title[:-8]
-        title=title.strip('<title>')
-
+        title=re.findall('<title>(.*?)<\/title>',obj.text)
     except BaseException:
         title=url
-        
     return title
 
+def get_category_obj(category_name):
+    category_obj = session_db.query(Category).filter(Category.name == category_name).first()
