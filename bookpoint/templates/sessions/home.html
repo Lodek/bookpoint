@@ -1,4 +1,5 @@
-{% extends "layout.html" %}
-{% block content %}
-
-{% endblock %}
+      {% for category, marks in sessions_dict.items() %}
+      {% for mark in marks %}
+      {{ mark.id }}
+      {% endfor %}
+      {% endfor %}

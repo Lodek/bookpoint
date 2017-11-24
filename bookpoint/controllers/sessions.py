@@ -16,18 +16,11 @@ def new():
     return render_template('sessions/new.html')
 
 def create():
-    tag_obj = session_db.query(Tag).filter(Tag.name == 'session').first()
-    category = request.form['category']
-    notes = request.form['notes']
-    urls = request.form['urls']
-    urls = urls.split('\n')
-    for url in urls:
-        title = lib.get_title(url)
-        new_mark = Mark(url=url, title=title, notes=notes
-
+    return
 
 def get_sessions():
-    tag_obj = session_db.query(Tag).filter(Tag.name == 'sessions').first() #get tag obj for sessions
+    tag_obj = session_db.query(Tag).filter(Tag.name == 'session').first() #get tag obj for sessions
+
     mark_list = tag_obj.marks
 
     session_dict = {} #empty dict

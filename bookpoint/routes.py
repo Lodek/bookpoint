@@ -23,7 +23,7 @@ def bookpoint_create():
 #Sessions routes
 @app.route('/sessions/')
 def sessions_home():
-    return session.home()
+    return sessions.home()
 
 @app.route('/sessions/orghome')
 def sessions_orghome():
