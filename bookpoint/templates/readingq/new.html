@@ -10,10 +10,8 @@
   </head>
   <body>
     <div class="container">
-      <form action="{{ url_for('sessions_create') }}" method="post" accept-charset="utf-8">
-        urls: <textarea name="urls" rows="10" cols="70"> </textarea><br>
-        category: <input type="text" name="category" id="" value="" /><br>
-        notes: <input type="text" name="notes" id="" value="" /><br>
+      <form action="{{ url_for('readingq_create') }}" method="post" accept-charset="utf-8">
+        url: <input type="text" name="url" id="" value="" /><br>
       <input type="submit" name="" id="" value="add entry" />
   </form>
     </div>

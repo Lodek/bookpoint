@@ -1,0 +1,7 @@
+{% for category, marks in marksd.items() %}
+* {{ category }}
+{% for mark in marks %}
+** {{ mark.id }} - [[{{ mark.url }}][{{ mark.title }}]] {{ mark_tags(mark) }}
+{{marks.notes}}
+{% endfor %}
+{% endfor %}

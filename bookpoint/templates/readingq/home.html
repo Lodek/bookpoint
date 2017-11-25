@@ -10,11 +10,9 @@
   </head>
   <body>
     <div class="container">
-      {% for category, marks in sessions.items() %}
-      <h1>{{ category }}</h1>
+      <h1>Reading Q</h1>
       {% for mark in marks %}
       <a href="{{ mark.url }}"> {{ mark.title}}  </a><br>
-      {% endfor %}
       {% endfor %}
     </div>
   </body>

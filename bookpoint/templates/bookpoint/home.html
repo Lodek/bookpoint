@@ -10,7 +10,7 @@
   </head>
   <body>
     <div class="container">
-      {% for category, marks in sessions.items() %}
+      {% for category, marks in marksd.items() %}
       <h1>{{ category }}</h1>
       {% for mark in marks %}
       <a href="{{ mark.url }}"> {{ mark.title}}  </a><br>
