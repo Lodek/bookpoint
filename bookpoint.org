@@ -2,12 +2,7 @@
 
 ** 3 - [[https://github.com/Lodek/bookpoint/blob/master/list.py][bookpoint/list.py at master · Lodek/bookpoint · GitHub]] :bookpoint:tag:
 
-
-** 4 - [[https://www.youtube.com/watch?v=cWGE9Gi0bB0][Pink Floyd - Shine On You Crazy Diamond [ Official Music Video ] - YouTube]] :pinkfloyd:bookpoint:
-
-
-** 5 - [[https://www.youtube.com/watch?v=cWGE9Gi0bB0]['Pink Floyd - Shine On You Crazy Diamond | Official Music Video | - YouTube']] :pinkfloyd:bookpoint:
-
+   
 
 
 * readingq
