@@ -1,64 +1,79 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+from model import Category, Mark, Note, Tag
+import logging
 
+db_path = '/home/lodek/bookpoint/bookpoint.db'
 
 class Database(Session):
-    def __init__(self):
-        self.engine = create_engine('sqlite:///'.format(self.db_path), echo=True)
+
+    """ Abstraction of the sqlite database containing the tables specified in model. 
+    This class extends Sql Alchemy's Session class and add methods pertinent to the operations needed by bookpoint"""
+    
+    def __init__(self, db_fp=''):
+        self.db_fp = db_fp if db_fp != '' else db_path
+        self.base = declarative_base()
+        self.engine = create_engine('sqlite:///'.format(self.db_fp), echo=True)
         super().__init__(bind=self.engine)
-        #number of each object initially        
-        self.tags_n = self.query.(Tag).count()
-        self.marks_n = self.query.(Mark).count()
-        self.notes_n = self.query.(Note).count()
-        self.categories_n = self.query.(Category).count()
+        self._create_db()
+        #names to ease queries
+        self.q_note = lambda _ : self.query(Noten)
+        self.q_tag = lambda _ : self.query(Tag)
+        self.q_mark = lambda _ : self.query(Mark)
+        self.q_category = lambda _ : self.query(Category)
         
-        self.db_path = db_path
-        self.org_path = org.path
-        self.base = declarative_base()
-
-        
-class Database():
-
-    """ Class that interfaces with sql alchemy generating the session object that is utilized to add/remove things to database """
-    
-    db_path = '/home/lodek/bookpoint/bookpoint.db'
-    org_path = '/home/lodek/bookpoint/bookpoint.org'
-    
-    def __init__(self, db_path=Database.db_path, org_path=Database.org_path):
-        self.db_path = db_path
-        self.org_path = org.path
-        self.base = declarative_base()
-
-        
-        
-    def create_db(self):
-        #log info creating database
+                   
+    def _create_db(self):
+        """ method that creates the database file and all tables as defined by the mapper classes in model.py"""
+        logging.info('Creating Database')
         self.base.metadata.create_all(self.engine)
         
-    def clean_db(self):
-        #log info cleaning orphans in database
-                
-        rm_categories = [category for category in self.query(Category).all() if category.marks == []]
-        #log debug found {len(rm_categories)} category objects to remove
-        rm_marks = [mark for mark in self.query(Mark).all() if not mark.category]
-        #log debug found {len(rm_marks)} mark objects to remove
-        rm_tags = [tag for tag in self.query(Tag).all() if tag.marks == []]
-        #log debug found {len(rm_tags)} tag objects to remove
-        rm_notes = [note for note in self.query(Note).all() if not note.mark]
-        #log debug found {len(rm_notes)} note objects to remove
-
+    def clean(self):
+        """ removes any and all orphan entries in the database.
+        orphan categories are categories with no marks
+        orphan marks are marks with no categories
+        orphan tags are tags with no marks
+        orphan notes are notes with no marks """
+        logging.info('Cleaning orphans in database')
+        rm_categories = [category for category in self.get_all_category() if category.marks == []]
         self._remove_objs_in(rm_categories)
+        logging.debug('Removed {} Category objects from DB'.format(len(rm_categories)))
+        rm_marks = [mark for mark in self.get_all_mark() if not mark.category]
         self._remove_objs_in(rm_marks)
+        logging.debug('Removed {} Mark objects from DB'.format(len(rm_marks)))
+        rm_tags = [tag for tag in self.get_all_tag() if tag.marks == []]
         self._remove_objs_in(rm_tags)
+        logging.debug('Removed {} Tag objects from DB'.format(len(rm_tags)))
+        rm_notes = [note for note in self.get_all_note() if not note.mark]
         self._remove_objs_in(rm_notes)
-
+        logging.debug('Removed {} Note objects from DB'.format(len(rm_note)))
+        self.commit()
         removed_count = len(rm_marks) + len(rm_categories) + len(rm_tags) + len(rm_notes)
-        #log info removed {removed_count} objects from databse
+        logging.info('Removed {} objects on total'.format(removed_count))
         return
 
     def _remove_objs_in(self, list):
-        """ removes all elements in list from database """
+        """ removes all elements in list from database and commits it"""
         for element in list:
-            self.rm(element)
+            self.delete(element)
+        self.commit()
+        logging.debug('Removed {} objects of type {} from database'.format(len(list),type(list[0])))
         return
+
+        
+    #returns all objects of a given type currently existing in the db
+    def get_all_tag(self):
+        return self._get_all(Tag)
+        
+    def get_all_mark(self):
+        return self._get_all(Mark)
+        
+    def get_all_note(self):
+        return self._get_all(Note)
+        
+    def get_all_category(self):
+        return self._get_all(Category)
+        
+    def _get_all(self, table):
+        return self.query(table).all()

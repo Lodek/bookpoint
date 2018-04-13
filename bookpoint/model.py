@@ -27,9 +27,10 @@ class Category(Base):
     
     def get_from_raw(self,category_raw):
         """ Method that returns a Category object matching the category that is on the list received as paramater.
-        The list contains the category name and its marks (in org-mode markup) """
+        The list contains the category name and its marks (in org-mode markup)
+        sample input ['* Category_Name', '** [[mark_url][mark_title]]'...]"""
         name = re.search(lib.regexes['categories'], category_raw[0]).group(1)
-        category = db_session.query(Category).filter(Category.name == name).first()
+        category = db.q_category().filter(Category.name == name).first()
         if not category:
             category = Category(name=name)
         category.marks_raw = raw_category[1:]
@@ -55,26 +56,35 @@ class Mark(Base):
 
     
     def add_mark(self,url):
-        """  """
-        db_session.add(Mark(url=url, title=lib.get_title(url)))
+        db_session.add(Mark(url=url, title=self.get_title(url)))
         db_session.commit()
         return
     
-    def get_from_raw(mark_raw):
+    def get_from_raw(mark_raw,db):
         """ Method that receives the body of a Mark as a list in raw form (org-mode markup). 
         The received list is processed and a mark object is returned matching the URL from the list. 
-        The object may be a new object (in case of a new mark) or one that already exists on the db.
+        The object may be a new object (in case of a new mark) or one that already exists in the db.
         Finally, the new mark object will contain in its instance a tag_raw and a notes_raw attribute. """
         regex = lib.regexes['marks']
         match = re.search(regex,mark_raw[0])
         url = match.group(1)
         tags = match.group(2)
-        mark = db_session.query(mark).filter(Mark.url == url).first()
+        mark = db.q_mark().filter(Mark.url == url).first()
         if not mark:
             mark = Mark(url=url, title=lib.get_title(url))
         mark.tags_raw = tags
         mark.notes_raw = mark_raw[1:]
         return mark
+
+    def _get_title(self,url):
+        """ Given an url the function returns the title of the page, if it fails to connect or if the website doesn't exist returns the url."""
+        # Discard exception for when the url is not valid or whatever
+        try:
+            obj=requests.get(url)
+            title=re.search('<title>(.*?)<\/title>',obj.text).group(1).replace('[', '|').replace(']','|')
+        except BaseException:
+            title=url
+        return title
 
 
 class Tag(Base):
@@ -83,8 +93,8 @@ class Tag(Base):
     name = Column(String)
     marks = relationship('Mark', secondary=tag_mark_tb, back_populates='tags')
 
-    def get_from_raw(self,tag_raw):
-        tag = db_session.query(Tag).filter(Tag.name == tag_raw).first()
+    def get_from_raw(self,tag_raw,db):
+        tag = db.q_tag().filter(Tag.name == tag_raw).first()
         if not tag:
             tag = Tag(name=tag_raw)
         return tag
