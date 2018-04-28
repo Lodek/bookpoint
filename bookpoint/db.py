@@ -13,7 +13,7 @@ class Database(Session):
     def __init__(self, db_fp):
         self.db_fp = db_fp
         self.base = Base
-        self.engine = create_engine('sqlite:///'.format(self.db_fp), echo=True)
+        self.engine = create_engine('sqlite:///'.format(self.db_fp), echo=False)
         super().__init__(bind=self.engine)
         self._create_db()
         #names to ease queries

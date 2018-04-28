@@ -1,5 +1,6 @@
 from db import Database
-import lib
+from model import Category, Tag, Mark
+import utils
 import logging, re
 
 logger = logging.getLogger(__name__)
@@ -17,6 +18,7 @@ class Org():
         self.categories = []
         self.marks = []
         self.notes = []
+        self.tags = []
         logger.info('Instance of Org created. self.org_fp = {} self.db.path_to_db = FIGURE IT OUT'.format(self.org_fp))
 
     def _read_org(self):
@@ -44,8 +46,12 @@ class Org():
                 current_mark.note = '\n'.join(note_lines)
                 note_lines = []
                 if is_mark(line):
-                    mark = Mark.get_from_raw(line)
+                    match = re.search(utils.regexes['splitter'], line)
+                    mark = Mark.get_from_raw(match(1))
                     current_mark = mark
+                    tags = Tag.get_from_raw(match(2))
+                    current_mark.tags = tags
+                    self.tags.extend(tags)
                     self.marks.append(mark)
                     current_category.marks.append(mark)
                 elif is_category(line):

@@ -59,11 +59,12 @@ class Mark(Base):
         url = match.group(1)
         mark = db.query(cls).filter(cls.url==url).first()
         if not mark:
-            mark = Mark(url=url, title=self.get_title(url))
+            mark = Mark(url=url, title=cls._get_title(url))
         logger.debug('Returning mark {}'.format(mark.url))
         return mark
 
-    def _get_title(self, url):
+    @staticmethod
+    def _get_title(url):
         """ Given an url the function returns the title of the page, if it fails to connect or if the website doesn't exist returns the url."""
         try:
             obj=requests.get(url)
@@ -87,12 +88,14 @@ class Tag(Base):
     def get_from_raw(cls, tags_raw, db):
         """ Given a string of tags returns a list of Tag objects. 
         Ex input >>> ':tag1:tag2:tag3: 
-                 >>> '::'
+                 >>> ''
         Contract - tags_raw must be a valid tag string """
-        if tags_raw == '::':
+        if tags_raw == '':
             logger.debug('Returning 0 tag objects')
             return []
         tags_raw = tags_raw[1:-1].split(':')
+        if '' in tags_raw:
+            return []
         tags = []
         for tag_raw in tags_raw:
             tag = db.query(cls).filter(cls.name==tag_raw).first()

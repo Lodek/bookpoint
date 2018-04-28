@@ -32,3 +32,27 @@ class TagTester(ModelBase):
         tags = Tag.get_from_raw(':potato:bacon:', self.db)
         for expected, returned in zip(tags_string, tags):
             self.assertEqual(expected, returned.name)
+
+
+class MarkTester(ModelBase):
+    def test_min(self):
+        raw = '** [[url]]'
+        mark = Mark.get_from_raw(raw, self.db)
+        self.assertEqual('url', mark.url)
+
+    def test_title(self):
+        raw = '** [[url][title]]'
+        mark = Mark.get_from_raw(raw, self.db)
+        self.assertEqual('url', mark.url)
+        
+    def test_min(self):
+        raw = '** [[url]] (11/11/11)'
+        mark = Mark.get_from_raw(raw, self.db)
+        self.assertEqual('url', mark.url)
+        
+    def test_min(self):
+        raw = '** [[url][title]] (11/11/11)'
+        mark = Mark.get_from_raw(raw, self.db)
+        self.assertEqual('url', mark.url)
+
+        

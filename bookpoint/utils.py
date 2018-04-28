@@ -1,9 +1,8 @@
 import configparser, logging
 
-regexes = {'marks':r'^\*\* \[\[(.*?)\](?:\[.*\])?\](?: \(.*\))? *(:.*:)?$',
-           'categories' : r'^\* (.*)$',
-           'notes' : r'^\*\*\* ([\d?]+)',
-           }
+regexes = {'marks':r'\*\* \[\[(.*?)\].*\]',
+           'splitter':r'(\*\* \[\[(.*?)\].*\] ?([0-9/)( ]*)?)( *(?::.*:)?)',
+           'categories' : r'^\* (.*)$'}
 
 def read_ini ():
     ini_fp = 'config.ini'

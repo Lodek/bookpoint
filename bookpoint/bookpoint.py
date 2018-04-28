@@ -10,6 +10,7 @@ def main():
     args = args_handler().parse_args()
     org_fp = args.org if args.org else ''
     db_fp = args.db if args.db else ''
+
     db = Database(db_fp)
     if args.command[0] == 'update':
         Org(db,org_fp=org_fp).update_db()
