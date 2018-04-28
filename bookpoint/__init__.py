@@ -1,1 +1,1 @@
-from .bookpoint import app
+

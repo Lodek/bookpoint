@@ -4,6 +4,8 @@ from org import Org
 import argparse
 import logging
 
+logger = logging.getLogger(__name__)
+
 def main():
     args = args_handler().parse_args()
     org_fp = args.org if args.org else ''
@@ -14,20 +16,6 @@ def main():
     elif args.command[0] == 'add':
         #Mark.add_mark()
 
-def logger_init():
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.DEBUG)
-    formatter = logging.Formatter('{asctime}|{levelname}|{name}|{funcName} - %(message)',style='{')
-    # create console handler and set level to debug
-    info_handler = logging.FileHandler('log_info.log')
-    info_handler.setLevel(logging.INFO)
-    info_handler.setFormatter(formatter)
-    debug_handler = logging.FileHandler('log_debug.log')
-    debug_handler.setLevel(logging.DEBUG)
-    debug_handler.setFormatter(formatter)
-    logger.addHandler(debug_handler)
-    logger.addHandler(info_handler)
-    return logger
 
 def args_handler():
     parser = argparse.ArgumentParser()

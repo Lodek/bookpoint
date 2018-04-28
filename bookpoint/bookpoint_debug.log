@@ -1,0 +1,362 @@
+2018-04-27 21:12:18,827|INFO|db|_create_db - Creating Database
+2018-04-27 21:12:18,829|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 21:12:18,830|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 21:12:18,832|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 21:12:18,833|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 21:12:18,862|INFO|sqlalchemy.engine.base.Engine|info - BEGIN (implicit)
+2018-04-27 21:12:18,865|INFO|sqlalchemy.engine.base.Engine|info - SELECT tags.id AS tags_id, tags.name AS tags_name 
+FROM tags 
+WHERE tags.name = ?
+ LIMIT ? OFFSET ?
+2018-04-27 21:12:18,866|INFO|sqlalchemy.engine.base.Engine|info - ('potato', 1, 0)
+2018-04-27 21:12:18,901|DEBUG|model|get_from_raw - Returning 0 tag objects
+2018-04-27 21:12:18,906|INFO|sqlalchemy.engine.base.Engine|info - SELECT tags.id AS tags_id, tags.name AS tags_name 
+FROM tags 
+WHERE tags.name = ?
+ LIMIT ? OFFSET ?
+2018-04-27 21:12:18,906|INFO|sqlalchemy.engine.base.Engine|info - ('test', 1, 0)
+2018-04-27 23:18:33,322|INFO|db|_create_db - Creating Database
+2018-04-27 23:18:33,324|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:18:33,325|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:18:33,327|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:18:33,328|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:18:33,352|INFO|sqlalchemy.engine.base.Engine|info - BEGIN (implicit)
+2018-04-27 23:18:33,355|INFO|sqlalchemy.engine.base.Engine|info - SELECT categories.id AS categories_id, categories.name AS categories_name 
+FROM categories 
+WHERE categories.name = ?
+ LIMIT ? OFFSET ?
+2018-04-27 23:18:33,356|INFO|sqlalchemy.engine.base.Engine|info - ('test_category', 1, 0)
+2018-04-27 23:18:33,368|INFO|db|_create_db - Creating Database
+2018-04-27 23:18:33,370|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:18:33,371|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:18:33,372|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:18:33,372|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:18:33,375|INFO|sqlalchemy.engine.base.Engine|info - BEGIN (implicit)
+2018-04-27 23:18:33,377|INFO|sqlalchemy.engine.base.Engine|info - SELECT tags.id AS tags_id, tags.name AS tags_name 
+FROM tags 
+WHERE tags.name = ?
+ LIMIT ? OFFSET ?
+2018-04-27 23:18:33,378|INFO|sqlalchemy.engine.base.Engine|info - ('potato', 1, 0)
+2018-04-27 23:18:33,382|INFO|db|_create_db - Creating Database
+2018-04-27 23:18:33,386|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:18:33,386|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:18:33,387|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:18:33,388|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:18:33,389|DEBUG|model|get_from_raw - Returning 0 tag objects
+2018-04-27 23:18:33,391|INFO|db|_create_db - Creating Database
+2018-04-27 23:18:33,393|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:18:33,394|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:18:33,395|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:18:33,395|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:18:33,398|INFO|sqlalchemy.engine.base.Engine|info - BEGIN (implicit)
+2018-04-27 23:18:33,400|INFO|sqlalchemy.engine.base.Engine|info - SELECT tags.id AS tags_id, tags.name AS tags_name 
+FROM tags 
+WHERE tags.name = ?
+ LIMIT ? OFFSET ?
+2018-04-27 23:18:33,400|INFO|sqlalchemy.engine.base.Engine|info - ('test', 1, 0)
+2018-04-27 23:20:08,686|INFO|db|_create_db - Creating Database
+2018-04-27 23:20:08,689|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:20:08,690|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:20:08,692|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:20:08,693|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:20:08,718|INFO|sqlalchemy.engine.base.Engine|info - BEGIN (implicit)
+2018-04-27 23:20:08,721|INFO|sqlalchemy.engine.base.Engine|info - SELECT categories.id AS categories_id, categories.name AS categories_name 
+FROM categories 
+WHERE categories.name = ?
+ LIMIT ? OFFSET ?
+2018-04-27 23:20:08,721|INFO|sqlalchemy.engine.base.Engine|info - ('test_category', 1, 0)
+2018-04-27 23:20:08,735|INFO|db|_create_db - Creating Database
+2018-04-27 23:20:08,738|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:20:08,739|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:20:08,741|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:20:08,741|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:20:08,744|INFO|sqlalchemy.engine.base.Engine|info - BEGIN (implicit)
+2018-04-27 23:20:08,747|INFO|sqlalchemy.engine.base.Engine|info - SELECT tags.id AS tags_id, tags.name AS tags_name 
+FROM tags 
+WHERE tags.name = ?
+ LIMIT ? OFFSET ?
+2018-04-27 23:20:08,747|INFO|sqlalchemy.engine.base.Engine|info - ('potato', 1, 0)
+2018-04-27 23:20:08,753|INFO|db|_create_db - Creating Database
+2018-04-27 23:20:08,757|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:20:08,758|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:20:08,759|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:20:08,760|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:20:08,761|DEBUG|model|get_from_raw - Returning 0 tag objects
+2018-04-27 23:20:08,764|INFO|db|_create_db - Creating Database
+2018-04-27 23:20:08,767|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:20:08,767|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:20:08,769|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2018-04-27 23:20:08,769|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-27 23:20:08,772|INFO|sqlalchemy.engine.base.Engine|info - BEGIN (implicit)
+2018-04-27 23:20:08,774|INFO|sqlalchemy.engine.base.Engine|info - SELECT tags.id AS tags_id, tags.name AS tags_name 
+FROM tags 
+WHERE tags.name = ?
+ LIMIT ? OFFSET ?
+2018-04-27 23:20:08,775|INFO|sqlalchemy.engine.base.Engine|info - ('test', 1, 0)
+2018-04-28 00:09:01,092|INFO|db|_create_db - Creating Database
+2018-04-28 00:09:01,094|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2018-04-28 00:09:01,095|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,097|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2018-04-28 00:09:01,098|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,101|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("mark_tag")
+2018-04-28 00:09:01,101|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,104|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("categories")
+2018-04-28 00:09:01,104|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,105|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("marks")
+2018-04-28 00:09:01,106|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,106|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("tags")
+2018-04-28 00:09:01,107|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,109|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE categories (
+	id INTEGER NOT NULL, 
+	name VARCHAR, 
+	PRIMARY KEY (id)
+)
+
+
+2018-04-28 00:09:01,110|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,111|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,112|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE tags (
+	id INTEGER NOT NULL, 
+	name VARCHAR, 
+	PRIMARY KEY (id)
+)
+
+
+2018-04-28 00:09:01,113|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,114|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,115|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE marks (
+	id INTEGER NOT NULL, 
+	url VARCHAR, 
+	title VARCHAR, 
+	notes VARCHAR, 
+	date DATE, 
+	category_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(category_id) REFERENCES categories (id)
+)
+
+
+2018-04-28 00:09:01,116|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,117|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,118|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE mark_tag (
+	tag_id INTEGER NOT NULL, 
+	mark_id INTEGER NOT NULL, 
+	PRIMARY KEY (tag_id, mark_id), 
+	FOREIGN KEY(tag_id) REFERENCES tags (id), 
+	FOREIGN KEY(mark_id) REFERENCES marks (id)
+)
+
+
+2018-04-28 00:09:01,119|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,120|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,143|INFO|sqlalchemy.engine.base.Engine|info - BEGIN (implicit)
+2018-04-28 00:09:01,145|INFO|sqlalchemy.engine.base.Engine|info - SELECT categories.id AS categories_id, categories.name AS categories_name 
+FROM categories 
+WHERE categories.name = ?
+ LIMIT ? OFFSET ?
+2018-04-28 00:09:01,145|INFO|sqlalchemy.engine.base.Engine|info - ('test_category', 1, 0)
+2018-04-28 00:09:01,147|DEBUG|model|get_from_raw - Returning category named test_category
+2018-04-28 00:09:01,150|INFO|db|_create_db - Creating Database
+2018-04-28 00:09:01,152|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2018-04-28 00:09:01,153|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,154|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2018-04-28 00:09:01,154|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,155|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("mark_tag")
+2018-04-28 00:09:01,156|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,157|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("categories")
+2018-04-28 00:09:01,158|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,159|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("marks")
+2018-04-28 00:09:01,159|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,160|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("tags")
+2018-04-28 00:09:01,160|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,162|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE categories (
+	id INTEGER NOT NULL, 
+	name VARCHAR, 
+	PRIMARY KEY (id)
+)
+
+
+2018-04-28 00:09:01,163|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,164|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,165|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE tags (
+	id INTEGER NOT NULL, 
+	name VARCHAR, 
+	PRIMARY KEY (id)
+)
+
+
+2018-04-28 00:09:01,165|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,166|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,167|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE marks (
+	id INTEGER NOT NULL, 
+	url VARCHAR, 
+	title VARCHAR, 
+	notes VARCHAR, 
+	date DATE, 
+	category_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(category_id) REFERENCES categories (id)
+)
+
+
+2018-04-28 00:09:01,168|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,169|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,170|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE mark_tag (
+	tag_id INTEGER NOT NULL, 
+	mark_id INTEGER NOT NULL, 
+	PRIMARY KEY (tag_id, mark_id), 
+	FOREIGN KEY(tag_id) REFERENCES tags (id), 
+	FOREIGN KEY(mark_id) REFERENCES marks (id)
+)
+
+
+2018-04-28 00:09:01,171|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,172|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,174|INFO|sqlalchemy.engine.base.Engine|info - BEGIN (implicit)
+2018-04-28 00:09:01,176|INFO|sqlalchemy.engine.base.Engine|info - SELECT tags.id AS tags_id, tags.name AS tags_name 
+FROM tags 
+WHERE tags.name = ?
+ LIMIT ? OFFSET ?
+2018-04-28 00:09:01,177|INFO|sqlalchemy.engine.base.Engine|info - ('potato', 1, 0)
+2018-04-28 00:09:01,180|INFO|sqlalchemy.engine.base.Engine|info - SELECT tags.id AS tags_id, tags.name AS tags_name 
+FROM tags 
+WHERE tags.name = ?
+ LIMIT ? OFFSET ?
+2018-04-28 00:09:01,180|INFO|sqlalchemy.engine.base.Engine|info - ('bacon', 1, 0)
+2018-04-28 00:09:01,182|DEBUG|model|get_from_raw - Returning 2 tag objects
+2018-04-28 00:09:01,185|INFO|db|_create_db - Creating Database
+2018-04-28 00:09:01,186|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2018-04-28 00:09:01,187|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,188|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2018-04-28 00:09:01,189|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,189|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("mark_tag")
+2018-04-28 00:09:01,190|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,191|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("categories")
+2018-04-28 00:09:01,192|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,192|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("marks")
+2018-04-28 00:09:01,193|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,194|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("tags")
+2018-04-28 00:09:01,194|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,196|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE categories (
+	id INTEGER NOT NULL, 
+	name VARCHAR, 
+	PRIMARY KEY (id)
+)
+
+
+2018-04-28 00:09:01,196|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,197|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,198|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE tags (
+	id INTEGER NOT NULL, 
+	name VARCHAR, 
+	PRIMARY KEY (id)
+)
+
+
+2018-04-28 00:09:01,199|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,199|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,201|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE marks (
+	id INTEGER NOT NULL, 
+	url VARCHAR, 
+	title VARCHAR, 
+	notes VARCHAR, 
+	date DATE, 
+	category_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(category_id) REFERENCES categories (id)
+)
+
+
+2018-04-28 00:09:01,201|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,202|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,203|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE mark_tag (
+	tag_id INTEGER NOT NULL, 
+	mark_id INTEGER NOT NULL, 
+	PRIMARY KEY (tag_id, mark_id), 
+	FOREIGN KEY(tag_id) REFERENCES tags (id), 
+	FOREIGN KEY(mark_id) REFERENCES marks (id)
+)
+
+
+2018-04-28 00:09:01,204|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,205|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,206|DEBUG|model|get_from_raw - Returning 0 tag objects
+2018-04-28 00:09:01,208|INFO|db|_create_db - Creating Database
+2018-04-28 00:09:01,210|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+2018-04-28 00:09:01,210|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,212|INFO|sqlalchemy.engine.base.Engine|info - SELECT CAST('test unicode returns' AS VARCHAR(60)) AS anon_1
+2018-04-28 00:09:01,212|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,213|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("mark_tag")
+2018-04-28 00:09:01,213|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,214|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("categories")
+2018-04-28 00:09:01,215|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,216|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("marks")
+2018-04-28 00:09:01,216|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,217|INFO|sqlalchemy.engine.base.Engine|info - PRAGMA table_info("tags")
+2018-04-28 00:09:01,217|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,219|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE categories (
+	id INTEGER NOT NULL, 
+	name VARCHAR, 
+	PRIMARY KEY (id)
+)
+
+
+2018-04-28 00:09:01,219|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,220|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,221|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE tags (
+	id INTEGER NOT NULL, 
+	name VARCHAR, 
+	PRIMARY KEY (id)
+)
+
+
+2018-04-28 00:09:01,222|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,223|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,224|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE marks (
+	id INTEGER NOT NULL, 
+	url VARCHAR, 
+	title VARCHAR, 
+	notes VARCHAR, 
+	date DATE, 
+	category_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(category_id) REFERENCES categories (id)
+)
+
+
+2018-04-28 00:09:01,225|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,225|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,227|INFO|sqlalchemy.engine.base.Engine|info - 
+CREATE TABLE mark_tag (
+	tag_id INTEGER NOT NULL, 
+	mark_id INTEGER NOT NULL, 
+	PRIMARY KEY (tag_id, mark_id), 
+	FOREIGN KEY(tag_id) REFERENCES tags (id), 
+	FOREIGN KEY(mark_id) REFERENCES marks (id)
+)
+
+
+2018-04-28 00:09:01,227|INFO|sqlalchemy.engine.base.Engine|info - ()
+2018-04-28 00:09:01,228|INFO|sqlalchemy.engine.base.Engine|info - COMMIT
+2018-04-28 00:09:01,230|INFO|sqlalchemy.engine.base.Engine|info - BEGIN (implicit)
+2018-04-28 00:09:01,232|INFO|sqlalchemy.engine.base.Engine|info - SELECT tags.id AS tags_id, tags.name AS tags_name 
+FROM tags 
+WHERE tags.name = ?
+ LIMIT ? OFFSET ?
+2018-04-28 00:09:01,232|INFO|sqlalchemy.engine.base.Engine|info - ('test', 1, 0)
+2018-04-28 00:09:01,234|DEBUG|model|get_from_raw - Returning 1 tag objects

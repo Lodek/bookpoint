@@ -1,21 +1,19 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Table, Date
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-from db import Database 
-import datetime
-import regexes
-import lib
+import logging, requests, datetime, re 
+import utils 
 
+logger = logging.getLogger(__name__)
 
 Base = declarative_base()
 
 tag_mark_tb = Table('mark_tag', Base.metadata, Column('tag_id', Integer, ForeignKey('tags.id'), primary_key=True), Column('mark_id', Integer, ForeignKey('marks.id'), primary_key=True))
 
-db_session = Database().session
 
 class Category(Base):
     
-    """ SQL Alchemy mapper class for the catogories table in the database. The columns of the table are class-wide declaration. 
+    """ SQL Alchemy mapper class for the categories table in the database. The columns of the table are class-wide declaration. 
     Category has a one to many relationship with Mark. Class contain methods for returning the correct Category object from a string
     matching the expected org file format."""
     
@@ -24,85 +22,82 @@ class Category(Base):
     name = Column(String)
     marks = relationship('Mark', back_populates='category')
 
-    
-    def get_from_raw(self,category_raw):
-        """ Method that returns a Category object matching the category that is on the list received as paramater.
-        The list contains the category name and its marks (in org-mode markup)
-        sample input ['* Category_Name', '** [[mark_url][mark_title]]'...]"""
-        name = re.search(lib.regexes['categories'], category_raw[0]).group(1)
-        category = db.q_category().filter(Category.name == name).first()
+    @classmethod
+    def get_from_raw(cls, category_raw, db):
+        """ Method returns a Category object matching the category_raw string.
+        Sample category_raw >> '* Category_Name' 
+        Contract - category_raw must be a valid string """
+        name = re.search(utils.regexes['categories'], category_raw).group(1)
+        category = db.query(cls).filter(cls.name==name).first()
         if not category:
-            category = Category(name=name)
-        category.marks_raw = raw_category[1:]
+            category = cls(name=name)
+        logger.debug('Returning category named {}'.format(category.name))
         return category
-        
-            
+
+
 class Mark(Base):
 
     """ Mapper class for the marks table in the database. Table Columns are class wide declarations.
-    Mark has a many to one relationship with Category,
-    a many to many relationship with Tag,
-    a many to one relationship with Note """
+    Mark has a many to one relationship with Category and a many to many relationship with Tag """
 
     __tablename__ = 'marks'
     id = Column(Integer, primary_key = True)
     url = Column(String)
     title = Column(String)
+    notes = Column(String)
+    date = Column(Date, default=datetime.date.today())
     category_id = Column(Integer, ForeignKey('categories.id'))
     category = relationship('Category', back_populates='marks')
-    notes = relationship('Note', back_populates='mark')
     tags = relationship("Tag", secondary=tag_mark_tb, back_populates='marks')
-    date = Column(Date, default=datetime.date.today())
 
-    
-    def add_mark(self,url):
-        db_session.add(Mark(url=url, title=self.get_title(url)))
-        db_session.commit()
-        return
-    
-    def get_from_raw(mark_raw,db):
-        """ Method that receives the body of a Mark as a list in raw form (org-mode markup). 
-        The received list is processed and a mark object is returned matching the URL from the list. 
-        The object may be a new object (in case of a new mark) or one that already exists in the db.
-        Finally, the new mark object will contain in its instance a tag_raw and a notes_raw attribute. """
-        regex = lib.regexes['marks']
-        match = re.search(regex,mark_raw[0])
+    @classmethod
+    def get_from_raw(cls, mark_raw, db):
+        """ Method that receives the first line of a Mark as a string and returns the matching mark object
+        sample mark_raw >>> '** [[mark_url]] 
+        Contract - mark_raw must be a valid mark string"""
+        match = re.search(utils.regexes['marks'], mark_raw)
         url = match.group(1)
-        tags = match.group(2)
-        mark = db.q_mark().filter(Mark.url == url).first()
+        mark = db.query(cls).filter(cls.url==url).first()
         if not mark:
-            mark = Mark(url=url, title=lib.get_title(url))
-        mark.tags_raw = tags
-        mark.notes_raw = mark_raw[1:]
+            mark = Mark(url=url, title=self.get_title(url))
+        logger.debug('Returning mark {}'.format(mark.url))
         return mark
 
-    def _get_title(self,url):
+    def _get_title(self, url):
         """ Given an url the function returns the title of the page, if it fails to connect or if the website doesn't exist returns the url."""
-        # Discard exception for when the url is not valid or whatever
         try:
             obj=requests.get(url)
             title=re.search('<title>(.*?)<\/title>',obj.text).group(1).replace('[', '|').replace(']','|')
         except BaseException:
             title=url
+            logger.exception('Could not get title for {}'.format(url))
         return title
 
 
 class Tag(Base):
+
+    """ Mapper class for tags table in database. tags has a many to many relationship with mark """
+
     __tablename__ = 'tags'
     id = Column(Integer, primary_key = True)
     name = Column(String)
     marks = relationship('Mark', secondary=tag_mark_tb, back_populates='tags')
 
-    def get_from_raw(self,tag_raw,db):
-        tag = db.q_tag().filter(Tag.name == tag_raw).first()
-        if not tag:
-            tag = Tag(name=tag_raw)
-        return tag
-    
-
-class Note(Base):
-    __tablename__ = 'notes'
-    id = Column(Integer, primary_key = True)
-    body = Column(String)
-    mark_id = Column(Integer, ForeignKey('marks.id'))
-    mark = relationship('Mark', back_populates='notes')
+    @classmethod
+    def get_from_raw(cls, tags_raw, db):
+        """ Given a string of tags returns a list of Tag objects. 
+        Ex input >>> ':tag1:tag2:tag3: 
+                 >>> '::'
+        Contract - tags_raw must be a valid tag string """
+        if tags_raw == '::':
+            logger.debug('Returning 0 tag objects')
+            return []
+        tags_raw = tags_raw[1:-1].split(':')
+        tags = []
+        for tag_raw in tags_raw:
+            tag = db.query(cls).filter(cls.name==tag_raw).first()
+            if not tag:
+                tag = cls(name=tag_raw)
+            tags.append(tag)
+        logger.debug('Returning {} tag objects'.format(len(tags)))
+        return tags
