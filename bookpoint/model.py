@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 import logging, requests, datetime, re 
 import utils 
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('bookpoint.model')
 
 Base = declarative_base()
 
@@ -71,7 +71,7 @@ class Mark(Base):
             title=re.search('<title>(.*?)<\/title>',obj.text).group(1).replace('[', '|').replace(']','|')
         except BaseException:
             title=url
-            logger.exception('Could not get title for {}'.format(url))
+            logger.debug('Could not get title for {}'.format(url))
         return title
 
 
@@ -90,17 +90,16 @@ class Tag(Base):
         Ex input >>> ':tag1:tag2:tag3: 
                  >>> ''
         Contract - tags_raw must be a valid tag string """
-        if tags_raw == '':
+        if tags_raw == '' or tags_raw == '::':
             logger.debug('Returning 0 tag objects')
             return []
         tags_raw = tags_raw[1:-1].split(':')
-        if '' in tags_raw:
-            return []
         tags = []
         for tag_raw in tags_raw:
             tag = db.query(cls).filter(cls.name==tag_raw).first()
             if not tag:
                 tag = cls(name=tag_raw)
             tags.append(tag)
-        logger.debug('Returning {} tag objects'.format(len(tags)))
+        lg = [tag.name for tag in tags]
+        logger.debug('Returning {} as tags'.format(lg))
         return tags

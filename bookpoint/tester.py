@@ -56,3 +56,16 @@ class MarkTester(ModelBase):
         self.assertEqual('url', mark.url)
 
         
+class OrgTester(ModelBase):
+    def setUp(self):
+        self.org = Org(org_fp, self.db)
+        
+    def test_reader(self):
+        self.org._read_org()
+        self.assertNotIn('', self.org.body)
+
+    def test_parser(self):
+        self.org._parse_org()
+        self.assertNotEqual([], self.org.marks)
+        self.assertNotEqual([], self.org.tags)
+        self.assertNotEqual([], self.org.categories)
